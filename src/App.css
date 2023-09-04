@@ -1,11 +1,65 @@
-.App {
-  text-align: center;
+.banner-display {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  margin: 4rem;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.logo {
+  height: 8rem;
+  width: 8rem;
 }
+
+.logo-display {
+  display: flex;
+  justify-content: space-around;
+}
+
+.menu-bar {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  font-weight: bold;
+  margin: 4rem;
+}
+
+.button-panel {
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2rem;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+}
+
+.board-display {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  margin: 4rem;
+}
+
+.segment-display {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  align-items: center;
+  gap: 1rem;
+}
+
+.bar-display {
+  display: flex;
+  gap: 1rem;
+}
+
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -28,11 +82,3 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}

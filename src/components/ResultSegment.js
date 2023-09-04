@@ -3,10 +3,12 @@ import ProgressBar from "./ProgressBar";
 
 export default function ResultSegment() {
   return (
-    <div>
+    <div className="segment-display">
       <span>Title</span>
-      <ProgressBar />
-      <ProgressBar />
+      <div className="bar-display">
+        <ProgressBar />
+        <ProgressBar />
+      </div>
     </div>
   );
 }

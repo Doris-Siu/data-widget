@@ -3,7 +3,7 @@ import React from 'react'
 export default function Menu() {
   return (
     <div>
-        <ul>
+        <ul className="menu-bar">
           <li>Overview</li>
           <li>General</li>
           <li>ARS</li>

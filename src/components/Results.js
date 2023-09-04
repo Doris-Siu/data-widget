@@ -3,7 +3,7 @@ import ResultSegment from "./ResultSegment";
 
 export default function Results() {
   return (
-    <div>
+    <div className="board-display">
       <ResultSegment />
       <ResultSegment />
       <ResultSegment />
