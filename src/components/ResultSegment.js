@@ -1,16 +1,24 @@
 import React from "react";
-import ProgressBar from "./ProgressBar";
 
 const ResultSegment = ({ type, homeValue, homeMax, awayValue, awayMax }) => {
   return (
-    <div>
-      {homeValue}
-      {type}
-      {awayValue}
-      <br />
-      <progress className="rtlProgressBar" value={homeValue} max={homeMax} />
+    <div className="segment-display">
+      <div>{type}</div>
 
-      <progress value={awayValue} max={awayMax} />
+      <div className="bar-display">
+        <div>
+          <div>{homeValue}</div>
+          <progress
+            className="rtl-progressbar"
+            value={homeValue}
+            max={homeMax}
+          />
+        </div>
+        <div>
+          <div>{awayValue}</div>
+          <progress value={awayValue} max={awayMax} />
+        </div>
+      </div>
     </div>
   );
 };
