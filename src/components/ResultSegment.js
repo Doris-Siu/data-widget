@@ -1,14 +1,18 @@
 import React from "react";
 import ProgressBar from "./ProgressBar";
 
-export default function ResultSegment() {
+const ResultSegment = ({ type, homeValue, homeMax, awayValue, awayMax }) => {
   return (
-    <div className="segment-display">
-      <span>Title</span>
-      <div className="bar-display">
-        <ProgressBar />
-        <ProgressBar />
-      </div>
+    <div>
+      {homeValue}
+      {type}
+      {awayValue}
+      <br />
+      <progress className="rtlProgressBar" value={homeValue} max={homeMax} />
+
+      <progress value={awayValue} max={awayMax} />
     </div>
   );
-}
+};
+
+export default ResultSegment;
