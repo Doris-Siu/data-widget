@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import getData from "../getData";
+import Results from "./Results";
 
 export default function Databoard() {
   const [data, setData] = useState(null);
@@ -8,5 +9,5 @@ export default function Databoard() {
     console.log("Fetching data");
     setData(getData());
   }, []);
-  return <div>{data ? data.match.id : "Fetching.."}</div>;
+  return <div>{data ? <Results /> : "Fetching.."}</div>;
 }
