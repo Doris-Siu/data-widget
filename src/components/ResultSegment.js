@@ -7,7 +7,7 @@ const ResultSegment = ({ type, homeValue, homeMax, awayValue, awayMax }) => {
 
       <div className="bar-display">
         <div>
-          <div>{homeValue}</div>
+          <div>{type==="Possession"?homeValue+"%":homeValue}</div>
           <progress
             className="rtl-progressbar"
             value={homeValue}
@@ -15,8 +15,8 @@ const ResultSegment = ({ type, homeValue, homeMax, awayValue, awayMax }) => {
           />
         </div>
         <div>
-          <div>{awayValue}</div>
-          <progress value={awayValue} max={awayMax} />
+          <div>{type==="Possession"?awayValue+"%":awayValue}</div>
+          <progress className="colored" value={awayValue} max={awayMax} />
         </div>
       </div>
     </div>

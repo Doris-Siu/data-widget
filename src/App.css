@@ -61,4 +61,9 @@
 
 .rtl-progressbar {
   direction: rtl;
+  accent-color: yellow;
+}
+
+.colored {
+  accent-color: green;
 }

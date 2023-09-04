@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
-import getData from "../getData";
+// import getData from "../getData";
 import ResultSegment from "./ResultSegment";
 
 export default function Results() {
   const FIRST_HALF_KEY = "fh";
-  const SECOND_HALF_KEY = "sh";
-  const FULL_KEY = "value";
 
   // set state variables to store data to be displayed
   const [dataLoaded, setDataLoaded] = useState(false);
@@ -24,76 +22,78 @@ export default function Results() {
 
   useEffect(() => {
     console.log("Fetching data");
+    fetch(process.env.REACT_APP_API_URL)
+      .then((res) => res.json())
+      .then((data) => {
+        let matchData = data.match;
+        let liveData = matchData.liveData;
+        let lineupData = liveData.lineups;
+        let homeData = lineupData.home.stats;
+        let awayData = lineupData.away.stats;
 
-    let matchData = getData().match;
-    let liveData = matchData.liveData;
-    let lineupData = liveData.lineups;
-    let homeData = lineupData.home.stats;
-    let awayData = lineupData.away.stats;
+        setHomePossessionData(
+          parseFloat(
+            homeData.filter((d) => {
+              return d.type === "possessionPercentage";
+            })[0][FIRST_HALF_KEY]
+          )
+        );
+        setAwayPossessionData(
+          parseFloat(
+            awayData.filter((d) => {
+              return d.type === "possessionPercentage";
+            })[0][FIRST_HALF_KEY]
+          )
+        );
 
-    setHomePossessionData(
-      parseFloat(
-        homeData.filter((d) => {
-          return d.type === "possessionPercentage";
-        })[0][FIRST_HALF_KEY]
-      )
-    );
-    setAwayPossessionData(
-      parseFloat(
-        awayData.filter((d) => {
-          return d.type === "possessionPercentage";
-        })[0][FIRST_HALF_KEY]
-      )
-    );
+        setHomeShotData(
+          parseFloat(
+            homeData.filter((d) => {
+              return d.type === "totalScoringAtt";
+            })[0][FIRST_HALF_KEY]
+          )
+        );
+        setAwayShotData(
+          parseFloat(
+            awayData.filter((d) => {
+              return d.type === "totalScoringAtt";
+            })[0][FIRST_HALF_KEY]
+          )
+        );
 
-    setHomeShotData(
-      parseFloat(
-        homeData.filter((d) => {
-          return d.type === "totalScoringAtt";
-        })[0][FIRST_HALF_KEY]
-      )
-    );
-    setAwayShotData(
-      parseFloat(
-        awayData.filter((d) => {
-          return d.type === "totalScoringAtt";
-        })[0][FIRST_HALF_KEY],
-        0
-      )
-    );
+        setHomeShotOnTargetData(
+          parseFloat(
+            homeData.filter((d) => {
+              return d.type === "ontargetScoringAtt";
+            })[0][FIRST_HALF_KEY]
+          )
+        );
+        setAwayShotOnTargetData(
+          parseFloat(
+            awayData.filter((d) => {
+              return d.type === "ontargetScoringAtt";
+            })[0][FIRST_HALF_KEY]
+          )
+        );
 
-    setHomeShotOnTargetData(
-      parseFloat(
-        homeData.filter((d) => {
-          return d.type === "ontargetScoringAtt";
-        })[0][FIRST_HALF_KEY]
-      )
-    );
-    setAwayShotOnTargetData(
-      parseFloat(
-        awayData.filter((d) => {
-          return d.type === "ontargetScoringAtt";
-        })[0][FIRST_HALF_KEY]
-      )
-    );
-
-    setHomeCornersData(
-      parseFloat(
-        homeData.filter((d) => {
-          return d.type === "wonCorners";
-        })[0][FIRST_HALF_KEY],
-        0
-      )
-    );
-    setAwayCornersData(
-      parseFloat(
-        awayData.filter((d) => {
-          return d.type === "wonCorners";
-        })[0][FIRST_HALF_KEY],
-        0
-      )
-    );
-    setDataLoaded(true);
+        setHomeCornersData(
+          parseFloat(
+            homeData.filter((d) => {
+              return d.type === "wonCorners";
+            })[0][FIRST_HALF_KEY],
+            0
+          )
+        );
+        setAwayCornersData(
+          parseFloat(
+            awayData.filter((d) => {
+              return d.type === "wonCorners";
+            })[0][FIRST_HALF_KEY],
+            0
+          )
+        );
+        setDataLoaded(true);
+      });
   }, []);
   return dataLoaded ? (
     <div className="board-display">
