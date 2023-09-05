@@ -1,4 +1,6 @@
 import "./App.css";
+import { Route, Routes } from "react-router-dom";
+
 import Banner from "./components/Banner";
 import Menu from "./components/Menu";
 import ButtonList from "./components/ButtonList";
@@ -10,7 +12,11 @@ function App() {
       <Banner />
       <Menu />
       <ButtonList />
-      <Databoard />
+      <Routes>
+        <Route index element={<Databoard timekey="fh" />} />
+        <Route path="/sh" element={<Databoard timekey="sh" />} />
+        <Route path="/value" element={<Databoard timekey="value" />} />
+      </Routes>
     </div>
   );
 }

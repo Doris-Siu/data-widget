@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function ButtonList() {
   return (
@@ -7,11 +8,17 @@ export default function ButtonList() {
         <b>General</b>
       </div>
 
-      <div className="buttons">
-        <button>Full Time</button>
-        <button>1st Half</button>
-        <button>2nd Half</button>
-      </div>
+      <nav className="buttons">
+        <button>
+          <Link to="/value">Full Time</Link>
+        </button>
+        <button>
+          <Link to="/">1st Half</Link>
+        </button>
+        <button>
+          <Link to="/sh">2nd Half</Link>
+        </button>
+      </nav>
     </div>
   );
 }
